@@ -4,6 +4,8 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven { url "http://repo.nwie.net:8080/nexus/content/groups/maven/" }
+		maven { url "http://maven.nwie.net/enterprise/" }
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
 	}
