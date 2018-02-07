@@ -6,6 +6,8 @@ import com.Employee.Repositories.EmployeeRepository;
 import com.Employee.Service.AddressDetailsSaveService;
 import com.Employee.Service.EmployeeDetailsSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -24,11 +26,10 @@ public class MainController {
 
     @PostMapping(path = "/addName")
     public @ResponseBody
-    String addNewUser(@RequestParam String firstName, @RequestParam String lastName) {
+    ResponseEntity addNewUser(@RequestBody Employee employee) {
         // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-        employeeDetailsSaveService.postEmployeeDetails(firstName, lastName);
-        return "Accounts Saved";
+        // @RequestBody means it is a json from the GET or POST request
+        return new ResponseEntity<>(employeeDetailsSaveService.postEmployeeDetails(employee),HttpStatus.OK);
     }
 
     @PostMapping(path = "/addAddr")

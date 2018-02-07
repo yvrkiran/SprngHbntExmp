@@ -12,12 +12,9 @@ public class EmployeeDetailsSaveService {
     private
     EmployeeRepository employeeRepository;
 
-    public Employee postEmployeeDetails(String firstName, String lastName) {
-        Employee emp = new Employee();
-        emp.setFirstName(firstName);
-        emp.setLastName(lastName);
-        employeeRepository.save(emp);
+    public Employee postEmployeeDetails(Employee employee) {
+        employeeRepository.save(employee);
 
-        return emp;
+        return employee;
     }
 }
